@@ -8,7 +8,7 @@ A fullstack todo application built as a learning project for vibe coding with an
 
 - **Framework:** Next.js 15 (App Router)
 - **Language:** TypeScript
-- **Database:** PostgreSQL
+- **Database:** PostgreSQL (local Docker container)
 - **ORM:** Prisma
 - **Styling:** Tailwind CSS
 - **Auth:** NextAuth.js v5 (Auth.js) with credentials provider
@@ -41,7 +41,7 @@ A fullstack todo application built as a learning project for vibe coding with an
 ## Authentication
 
 - **Provider:** Credentials (email + password)
-- **Password hashing:** bcrypt
+- **Password hashing:** bcrypt (minimum 8 characters)
 - **Session strategy:** JWT stored in a cookie
 - **Route protection:** Next.js middleware redirects unauthenticated users to `/login`
 - **Scope:** Register, login, logout. No forgot-password flow.
@@ -71,6 +71,7 @@ A fullstack todo application built as a learning project for vibe coding with an
   - Title text (strikethrough when completed)
   - Delete button (trash icon)
 - **Empty state:** Friendly message when no todos exist
+- **Sort order:** Newest first (createdAt descending)
 
 ## Backend
 
@@ -89,6 +90,7 @@ A fullstack todo application built as a learning project for vibe coding with an
 
 ## Out of Scope
 
+- Editing todo title after creation
 - Forgot password / email verification
 - Categories, tags, priorities, due dates
 - Drag-and-drop reordering
