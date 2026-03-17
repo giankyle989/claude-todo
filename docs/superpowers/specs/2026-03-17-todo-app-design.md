@@ -88,6 +88,29 @@ A fullstack todo application built as a learning project for vibe coding with an
 - **Auth pages:** Centered card layout, stacked form fields on all screen sizes
 - **No component library** — plain Tailwind utility classes
 
+## Version Control
+
+- **Git + GitHub**
+- **Branches:**
+  - `develop` — default working branch, used for local development and testing
+  - `main` — production branch, deployed to AWS
+
+## CI/CD
+
+- **GitHub Actions** with two workflows:
+  - **CI (on push to `develop` and PRs to `main`):** Install dependencies, lint, type-check, run tests
+  - **Deploy (on push to `main`):** Run CI checks, then deploy to AWS Amplify
+- **Branch flow:** Work on `develop` → test locally → PR to `main` → CI passes → merge → auto-deploy to prod
+
+## Deployment
+
+- **Hosting:** AWS Amplify (production only)
+- **Database:** AWS RDS PostgreSQL
+- **Environments:**
+  - **Develop (local):** `npm run dev` + local Docker PostgreSQL
+  - **Production (AWS):** Amplify auto-deploys from `main` branch, connects to RDS PostgreSQL
+- **Environment variables:** Managed via Amplify console (`DATABASE_URL`, `NEXTAUTH_SECRET`, `NEXTAUTH_URL`)
+
 ## Out of Scope
 
 - Editing todo title after creation
