@@ -12,6 +12,7 @@ A fullstack todo application built as a learning project for vibe coding with an
 - **ORM:** Prisma
 - **Styling:** Tailwind CSS
 - **Auth:** NextAuth.js v5 (Auth.js) with credentials provider
+- **Testing:** Vitest (unit tests for server actions), Playwright (e2e tests for critical flows)
 
 ## Data Model
 
@@ -60,7 +61,9 @@ A fullstack todo application built as a learning project for vibe coding with an
 - Centered card with name (optional), email, and password fields
 - Submit button to create account
 - Link to `/login`
+- Password must be at least 8 characters; show inline validation error if too short
 - Displays error messages on validation failure (e.g., email already taken)
+- On success: auto-login and redirect to `/`
 
 ### `/` (protected)
 
@@ -79,6 +82,7 @@ A fullstack todo application built as a learning project for vibe coding with an
 - **Mutations:** Server Actions for create todo, toggle complete, delete todo, register, login, logout
 - **Validation:** Server-side input validation on all actions
 - **Authorization:** Each todo action verifies the todo belongs to the authenticated user
+- **Error handling:** Server Actions return error messages on failure; the UI displays a brief inline error (e.g., "Failed to add todo") that auto-dismisses after a few seconds
 
 ## UI / Responsive Design
 
