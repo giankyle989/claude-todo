@@ -97,23 +97,28 @@ A fullstack todo application built as a learning project for vibe coding with an
 - **Git + GitHub**
 - **Branches:**
   - `develop` — default working branch, used for local development and testing
-  - `main` — production branch, deployed to AWS
+  - `prod` — production branch, deployed to AWS
 
 ## CI/CD
 
+> **Superseded by:** `docs/superpowers/specs/2026-03-18-deployment-cicd-design.md`
+
 - **GitHub Actions** with two workflows:
-  - **CI (on push to `develop` and PRs to `main`):** Install dependencies, lint, type-check, run tests
-  - **Deploy (on push to `main`):** Run CI checks, then deploy to AWS Amplify
-- **Branch flow:** Work on `develop` → test locally → PR to `main` → CI passes → merge → auto-deploy to prod
+  - **CI (on push to `develop` and PRs to `prod`):** Install dependencies, lint, type-check, run tests
+  - **Deploy (`workflow_dispatch` on `prod`, manual trigger):** SSH into EC2, run blue-green deploy script
+- **Branch flow:** Work on `develop` → merge to `prod` → manually trigger GitHub Action → blue-green deploy to EC2
 
 ## Deployment
 
-- **Hosting:** AWS Amplify (production only)
-- **Database:** AWS RDS PostgreSQL
+> **Superseded by:** `docs/superpowers/specs/2026-03-18-deployment-cicd-design.md`
+
+- **Hosting:** EC2 t2.micro (Amazon Linux 2023) with PM2 + Nginx
+- **Database:** PostgreSQL installed on the same EC2 instance
+- **Deploy strategy:** Blue-green (two app slots on ports 3000/3001, Nginx switches traffic)
 - **Environments:**
   - **Develop (local):** `npm run dev` + local Docker PostgreSQL
-  - **Production (AWS):** Amplify auto-deploys from `main` branch, connects to RDS PostgreSQL
-- **Environment variables:** Managed via Amplify console (`DATABASE_URL`, `NEXTAUTH_SECRET`, `NEXTAUTH_URL`)
+  - **Production (EC2):** Blue-green deploy via GitHub Actions + deploy.sh on EC2
+- **Environment variables:** Managed via shared `.env` on EC2 (`DATABASE_URL`, `NEXTAUTH_SECRET`, `NEXTAUTH_URL`)
 
 ## Out of Scope
 
