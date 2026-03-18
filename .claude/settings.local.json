@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bash \"C:/Users/ELITEBOOK/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.4/skills/brainstorming/scripts/start-server.sh\" --project-dir \"C:/Dev/claude-todo\")",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "mcp__plugin_context7_context7__resolve-library-id",
+      "mcp__plugin_context7_context7__query-docs",
+      "Bash(npx:*)",
+      "Bash(cp .gitignore eslint.config.mjs next.config.ts next-env.d.ts package.json package-lock.json postcss.config.mjs README.md tsconfig.json /c/Dev/claude-todo/)",
+      "Bash(cp -r public src /c/Dev/claude-todo/)",
+      "Bash(npm install:*)",
+      "Bash(timeout 15 npm run dev)",
+      "Bash(docker compose:*)",
+      "Bash(git ls-tree:*)",
+      "Bash(cp .env .env.backup)",
+      "Bash(cp .env.backup .env)",
+      "Bash(rm .env.backup)",
+      "Bash(node -e \"const { PrismaClient } = require\\(''''./src/generated/prisma''''\\); console.log\\(typeof PrismaClient\\);\")",
+      "Bash(git remote:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(node -e \"process.stdin.resume\\(\\); let d=''''''''; process.stdin.on\\(''''data'''',c=>d+=c\\); process.stdin.on\\(''''end'''',\\(\\)=>{try{JSON.parse\\(d\\);console.log\\(''''Valid JSON''''\\)}catch\\(e\\){console.log\\(''''Invalid:'''',e.message\\)}}\\)\")",
+      "Bash(node -e \"require\\(''next-auth''\\); console.log\\(''next-auth ok''\\)\")",
+      "Bash(taskkill //F //IM node.exe)",
+      "Bash(curl:*)",
+      "Bash(ssh:*)"
+    ]
+  }
+}
